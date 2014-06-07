@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "Projects">
+      <FileRef
+         location = "group:Runemal/Runemal.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Frameworks">
+      <FileRef
+         location = "container:Frameworks/RepositoryKit/RepositoryKit/RepositoryKit.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>
