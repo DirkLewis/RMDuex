@@ -69,16 +69,8 @@ class sqliteBackingstore: NSObject, BackingstoreProtocol {
         return managedObjectContext!
     }
     
-    func testfilter(includedElement : String, path :String) -> Bool{
-    
-        if includedElement == path{
-            return true
-        }
-        
-    }
-    
     func createManagedObjectModel() -> NSManagedObjectModel{
-    
+        
         if let model = managedObjectModel{
             return model
         }
@@ -86,24 +78,28 @@ class sqliteBackingstore: NSObject, BackingstoreProtocol {
         var models : Array<NSManagedObjectModel> = []
         
         for item : AnyObject in NSBundle.allBundles(){
-        
+            
             if let bundle = item as? NSBundle{
                 let modelPaths : Array <AnyObject> = bundle.pathsForResourcesOfType("momd", inDirectory: nil)
                 for modelpath : AnyObject in modelPaths{
                     let momURL : NSURL = NSURL.fileURLWithPath(modelpath as String)
                     let path : String = modelName! + ".momd"
-                    let momCount : Int = momURL.pathComponents.filter{
-                    
-                        
+                    let momCount : Int = momURL.pathComponents.filter{$0 as String == path}.count
+                
+                    if momCount > 0{
+                        let model : NSManagedObjectModel = NSManagedObjectModel(contentsOfURL: momURL)
+                        if models != nil{
+                            models += model
+                        }
                     }
-                    
                 }
+                
             }
-            
         }
-        
+        managedObjectModel = NSManagedObjectModel(byMergingModels: models)
         return managedObjectModel!
     }
+
 }
 
 
