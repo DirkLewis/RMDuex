@@ -10,6 +10,10 @@
 		2C4B22A81943CB5000D279EA /* RepositoryKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4B22A71943CB5000D279EA /* RepositoryKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C4B22AE1943CB5000D279EA /* RepositoryKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4B22A21943CB5000D279EA /* RepositoryKit.framework */; };
 		2C4B22B51943CB5000D279EA /* RepositoryKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B22B41943CB5000D279EA /* RepositoryKitTests.swift */; };
+		2CC49F7E1944803000312120 /* BackingstoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC49F7D1944803000312120 /* BackingstoreProtocol.swift */; };
+		2CC49F85194484D000312120 /* BackingstoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC49F7D1944803000312120 /* BackingstoreProtocol.swift */; };
+		2CC49F8E1944896700312120 /* sqliteBackingstore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC49F8D1944896700312120 /* sqliteBackingstore.swift */; };
+		2CC49F8F1944896700312120 /* sqliteBackingstore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC49F8D1944896700312120 /* sqliteBackingstore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +33,8 @@
 		2C4B22AD1943CB5000D279EA /* RepositoryKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RepositoryKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4B22B31943CB5000D279EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C4B22B41943CB5000D279EA /* RepositoryKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryKitTests.swift; sourceTree = "<group>"; };
+		2CC49F7D1944803000312120 /* BackingstoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackingstoreProtocol.swift; sourceTree = "<group>"; };
+		2CC49F8D1944896700312120 /* sqliteBackingstore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sqliteBackingstore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,8 @@
 		2C4B22A41943CB5000D279EA /* RepositoryKit */ = {
 			isa = PBXGroup;
 			children = (
+				2CC49F81194484A800312120 /* BackingStores */,
+				2CC49F7C19447FD500312120 /* Protocols */,
 				2C4B22A71943CB5000D279EA /* RepositoryKit.h */,
 				2C4B22A51943CB5000D279EA /* Supporting Files */,
 			);
@@ -100,6 +108,22 @@
 				2C4B22B31943CB5000D279EA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2CC49F7C19447FD500312120 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2CC49F7D1944803000312120 /* BackingstoreProtocol.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		2CC49F81194484A800312120 /* BackingStores */ = {
+			isa = PBXGroup;
+			children = (
+				2CC49F8D1944896700312120 /* sqliteBackingstore.swift */,
+			);
+			name = BackingStores;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +234,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CC49F7E1944803000312120 /* BackingstoreProtocol.swift in Sources */,
+				2CC49F8E1944896700312120 /* sqliteBackingstore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +243,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CC49F85194484D000312120 /* BackingstoreProtocol.swift in Sources */,
+				2CC49F8F1944896700312120 /* sqliteBackingstore.swift in Sources */,
 				2C4B22B51943CB5000D279EA /* RepositoryKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +348,7 @@
 		2C4B22B91943CB5000D279EA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -329,12 +358,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		2C4B22BA1943CB5000D279EA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -398,6 +429,7 @@
 				2C4B22BA1943CB5000D279EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C4B22BB1943CB5000D279EA /* Build configuration list for PBXNativeTarget "RepositoryKitTests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +438,7 @@
 				2C4B22BD1943CB5000D279EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
