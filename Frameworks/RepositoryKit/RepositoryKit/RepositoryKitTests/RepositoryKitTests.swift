@@ -8,6 +8,7 @@
 
 import XCTest
 
+
 class RepositoryKitTests: XCTestCase {
     
     override func setUp() {
@@ -33,7 +34,9 @@ class RepositoryKitTests: XCTestCase {
 //    }
     
     func testCreateBackingstore(){
-    
+        var bs = sqliteBackingstore()
+        
+        
     }
     
 }
