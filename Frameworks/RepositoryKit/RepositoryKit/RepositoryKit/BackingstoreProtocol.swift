@@ -12,9 +12,9 @@ import CoreData
 
 protocol BackingstoreProtocol {
 
-    var modelName : String? {get set}
-    var fileName : String? {get set}
-    var configurationName : String? {get set}
+    var modelName : String? {get}
+    var fileName : String? {get}
+    var configurationName : String? {get}
     var backingstoreMOC : NSManagedObjectContext? {get}
     var errorArray : Array<NSError>? {get}
     

@@ -14,6 +14,7 @@
 		2CC49F85194484D000312120 /* BackingstoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC49F7D1944803000312120 /* BackingstoreProtocol.swift */; };
 		2CC49F8E1944896700312120 /* sqliteBackingstore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC49F8D1944896700312120 /* sqliteBackingstore.swift */; };
 		2CC49F8F1944896700312120 /* sqliteBackingstore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC49F8D1944896700312120 /* sqliteBackingstore.swift */; };
+		2CD82C4B1948B4900091BA9F /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2CD82C481948B4900091BA9F /* TestModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,8 @@
 		2C4B22B41943CB5000D279EA /* RepositoryKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryKitTests.swift; sourceTree = "<group>"; };
 		2CC49F7D1944803000312120 /* BackingstoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackingstoreProtocol.swift; sourceTree = "<group>"; };
 		2CC49F8D1944896700312120 /* sqliteBackingstore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sqliteBackingstore.swift; sourceTree = "<group>"; };
+		2CD82C491948B4900091BA9F /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
+		2CD82C4C1948B4E10091BA9F /* TestModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TestModel 2.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +99,8 @@
 		2C4B22B11943CB5000D279EA /* RepositoryKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				2C4B22B41943CB5000D279EA /* RepositoryKitTests.swift */,
+				2CD82C4E1948B5200091BA9F /* Tests */,
+				2CD82C4D1948B50C0091BA9F /* Model */,
 				2C4B22B21943CB5000D279EA /* Supporting Files */,
 			);
 			path = RepositoryKitTests;
@@ -124,6 +128,22 @@
 				2CC49F8D1944896700312120 /* sqliteBackingstore.swift */,
 			);
 			name = BackingStores;
+			sourceTree = "<group>";
+		};
+		2CD82C4D1948B50C0091BA9F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2CD82C481948B4900091BA9F /* TestModel.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2CD82C4E1948B5200091BA9F /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2C4B22B41943CB5000D279EA /* RepositoryKitTests.swift */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +266,7 @@
 				2CC49F85194484D000312120 /* BackingstoreProtocol.swift in Sources */,
 				2CC49F8F1944896700312120 /* sqliteBackingstore.swift in Sources */,
 				2C4B22B51943CB5000D279EA /* RepositoryKitTests.swift in Sources */,
+				2CD82C4B1948B4900091BA9F /* TestModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +462,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2CD82C481948B4900091BA9F /* TestModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2CD82C4C1948B4E10091BA9F /* TestModel 2.xcdatamodel */,
+				2CD82C491948B4900091BA9F /* TestModel.xcdatamodel */,
+			);
+			currentVersion = 2CD82C4C1948B4E10091BA9F /* TestModel 2.xcdatamodel */;
+			name = TestModel.xcdatamodeld;
+			path = ../RepositoryKit/TestModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2C4B22991943CB5000D279EA /* Project object */;
 }

@@ -34,9 +34,13 @@ class RepositoryKitTests: XCTestCase {
 //    }
     
     func testCreateBackingstore(){
-        var bs = sqliteBackingstore()
-        
-        
+        var bs = sqliteBackingstore.createBackingstore("TestModel", fileName: "Test.sqlite", configurationName: "Default")
+        XCTAssertTrue(bs != nil, "Must Not Be nil", file: "", line: 0)
+    }
+    
+    func testOpenBackingStore(){
+        var bs = sqliteBackingstore.createBackingstore("TestModel", fileName: "Test.sqlite", configurationName: "Default")
+        XCTAssertTrue(bs.openBackingstore(), "Backingstore must open", file: "", line: 0)
     }
     
 }

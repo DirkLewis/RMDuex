@@ -22,9 +22,9 @@ class sqliteBackingstore: NSObject,BackingstoreProtocol {
     }
     
     init(backingstore modelName: String!, fileName: String!, configurationName: String!) {
-        self.modelName = modelName ? modelName : "model"
-        self.fileName = fileName ? fileName : "model.sqlite"
-        self.configurationName = configurationName ? configurationName : "Default"
+        self._modelName = modelName ? modelName : "model"
+        self._fileName = fileName ? fileName : "model.sqlite"
+        self._configurationName = configurationName ? configurationName : "Default"
         
         super.init()
         
@@ -36,16 +36,34 @@ class sqliteBackingstore: NSObject,BackingstoreProtocol {
     
     // #pragma mark - Properties
     
-    var modelName : String?
-    var fileName : String?
-    var configurationName : String?
+    var _modelName : String = ""
+    var modelName : String?{
+        get{
+            return _modelName
+        }
+    }
+    
+    var _fileName : String = ""
+    var fileName : String?{
+        get{
+            return _fileName
+        }
+    }
+    
+    var _configurationName : String = ""
+    var configurationName : String?{
+        get{
+            return _configurationName
+        }
+    }
+    
+    var _errorArray = NSError[]()
     var errorArray : Array<NSError>?{
         get{
         
             return _errorArray
         }
     }
-    var _errorArray = NSError[]()
     
     var backingstoreMOC : NSManagedObjectContext?{
         get{
@@ -58,6 +76,9 @@ class sqliteBackingstore: NSObject,BackingstoreProtocol {
     //public methods
     func openBackingstore() -> Bool {
         
+        if managedObjectContext != nil{
+            return true
+        }
         return false
     }
     
@@ -171,11 +192,11 @@ class sqliteBackingstore: NSObject,BackingstoreProtocol {
                 }
             }
         }
+        _managedObjectModel = NSManagedObjectModel(byMergingModels: models)
     }
         return _managedObjectModel!
     }
 
-    
     // Returns the persistent store coordinator for the application.
     // If the coordinator doesn't already exist, it is created and the application's store added to it.
     var _persistentStoreCoordinator: NSPersistentStoreCoordinator? = nil
@@ -184,14 +205,15 @@ class sqliteBackingstore: NSObject,BackingstoreProtocol {
     if !_persistentStoreCoordinator {
         var error: NSError? = nil
         
-        _persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+        _persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
         
         if(createDocumentDirectoryForSaving()){
             
             let storeURLs = (NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask))
-            let storeName = storeURLs[storeURLs.endIndex].URLByAppendingPathComponent(fileName)
+            let storeName = storeURLs[0].URLByAppendingPathComponent(fileName)
             let options = [NSMigratePersistentStoresAutomaticallyOption:true,NSInferMappingModelAutomaticallyOption:true]
             let migrationRequired = datastoreMigrationRequired(storeName)
+            
             if migrationRequired{
                 NSNotificationCenter.defaultCenter().postNotificationName("datastoremigrationnotification", object: ["message":"Migration Required", "code":0])
             }
