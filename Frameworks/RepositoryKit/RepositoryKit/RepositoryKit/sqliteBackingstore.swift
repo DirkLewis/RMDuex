@@ -79,6 +79,7 @@ class sqliteBackingstore: NSObject,BackingstoreProtocol {
         
         let context = managedObjectContext
         
+        context.userInfo["QueueName"] = "Default"
         _managedObjectContextQueue["Default"] = context
         
         return context
@@ -92,7 +93,7 @@ class sqliteBackingstore: NSObject,BackingstoreProtocol {
         }
         
         let context = managedObjectContext
-        
+        context.userInfo["QueueName"] = queueName
         _managedObjectContextQueue[queueName] = context
         
         return context

@@ -51,11 +51,12 @@ class RepositoryKitTests: XCTestCase {
     func testOpenBackingStoreByName(){
     
         var bs = sqliteBackingstore.createBackingstore("TestModel", fileName: "Test.sqlite", configurationName: "Default")
-        let context1 = bs.openBackingstoreContext("myqueue")
-        XCTAssertTrue(context1, "Backingstore must open", file: "", line: 0)
+        let context1 = bs.openBackingstoreContext("myqueue")!
+        XCTAssertTrue(context1 != nil, "Backingstore must open", file: "", line: 0)
         let context2 = bs.openBackingstoreContext("myqueue")
         XCTAssertEqualObjects(context1, context2, "Must be the same object", file: "", line: 0)
-    
+        XCTAssertTrue(context1.userInfo["QueueName"] as NSString == "myqueue", "Name must match", file: "", line: 0)
     }
+
     
 }
