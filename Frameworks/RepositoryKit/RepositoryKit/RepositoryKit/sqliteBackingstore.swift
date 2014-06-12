@@ -36,6 +36,9 @@ class sqliteBackingstore: NSObject,BackingstoreProtocol {
     
     // #pragma mark - Properties
     
+    var _backingstore : BackingstoreProtocol?
+    var _managedObjectContextQueue = Dictionary<String,NSManagedObjectContext>()
+    
     var _modelName : String = ""
     var modelName : String?{
         get{
@@ -65,24 +68,37 @@ class sqliteBackingstore: NSObject,BackingstoreProtocol {
         }
     }
     
-    var backingstoreMOC : NSManagedObjectContext?{
-        get{
-            return managedObjectContext
-        }
-    }
-    
     // #pragma mark - Public Methods
     
     //public methods
-    func openBackingstore() -> Bool {
+    func openBackingstoreDefaultContext() -> NSManagedObjectContext? {
         
-        if managedObjectContext != nil{
-            return true
+        if let defaultMOC = _managedObjectContextQueue["Default"]{
+            return defaultMOC
         }
-        return false
+        
+        let context = managedObjectContext
+        
+        _managedObjectContextQueue["Default"] = context
+        
+        return context
     }
     
-    func closeBackingstore() -> Bool {
+    
+    func openBackingstoreContext(queueName:NSString) -> NSManagedObjectContext?{
+        
+        if let defaultMOC = _managedObjectContextQueue[queueName]{
+            return defaultMOC
+        }
+        
+        let context = managedObjectContext
+        
+        _managedObjectContextQueue[queueName] = context
+        
+        return context
+    }
+    
+    func closeBackingstore() -> Bool{
         return false
     }
     
@@ -97,8 +113,31 @@ class sqliteBackingstore: NSObject,BackingstoreProtocol {
     func persistanceStoreExistsBy(storeName: String) -> Bool{
         return false
     }
+
     
     // #pragma mark - Private Methods
+    
+    func resetPersistentStoreCoordinator(deleteStore:Bool) ->Bool{
+    
+        let stores = persistentStoreCoordinator.persistentStores as Array<NSPersistentStore>
+        var error : NSError?
+        for store in stores{
+            persistentStoreCoordinator.removePersistentStore(store, error: &error)
+            if deleteStore{
+            
+                NSFileManager.defaultManager().removeItemAtPath(store.URL.path + "-wal", error: &error)
+                NSFileManager.defaultManager().removeItemAtPath(store.URL.path + "-shm", error: &error)
+                NSFileManager.defaultManager().removeItemAtPath(store.URL.path, error: &error)
+            }
+        }
+        _persistentStoreCoordinator = nil
+        if error{
+            _errorArray += error!
+            return false
+        }
+        
+        return true
+    }
     
     func datastoreMigrationRequired(datastoreURL:NSURL)->Bool{
     
@@ -161,7 +200,7 @@ class sqliteBackingstore: NSObject,BackingstoreProtocol {
         if !_managedObjectContext {
             let coordinator = self.persistentStoreCoordinator
             if coordinator != nil {
-                _managedObjectContext = NSManagedObjectContext()
+                _managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
                 _managedObjectContext!.persistentStoreCoordinator = coordinator
             }
         }
@@ -247,20 +286,6 @@ class sqliteBackingstore: NSObject,BackingstoreProtocol {
         return super.description + ";" + "Filename: " + fileName! + " Configuration: " + configurationName!
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
