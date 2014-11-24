@@ -17,7 +17,7 @@ protocol BackingstoreProtocol {
     var configurationName : String? {get}
     var errorArray : Array<NSError>? {get}
     
-    init(backingstore modelName:String!, fileName:String!, configurationName:String!)
+    init(backingstore modelName: String?, fileName: String?, configurationName: String?)
     func openBackingstoreDefaultContext() -> NSManagedObjectContext?
     func openBackingstoreContext(queueName:NSString) -> NSManagedObjectContext?
     func resetBackingstore() -> Bool
@@ -26,7 +26,7 @@ protocol BackingstoreProtocol {
     func persistanceStoreExistsBy(storeName:String) -> Bool
     
     
-    class func createBackingstore(modelName : String!, fileName : String!, configurationName : String!) -> BackingstoreProtocol
+    class func createBackingstore(modelName : String?, fileName : String?, configurationName : String?) -> BackingstoreProtocol
     
 
 }

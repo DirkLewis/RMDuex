@@ -12,9 +12,9 @@
 		2C4B22B51943CB5000D279EA /* RepositoryKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4B22B41943CB5000D279EA /* RepositoryKitTests.swift */; };
 		2CC49F7E1944803000312120 /* BackingstoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC49F7D1944803000312120 /* BackingstoreProtocol.swift */; };
 		2CC49F85194484D000312120 /* BackingstoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC49F7D1944803000312120 /* BackingstoreProtocol.swift */; };
-		2CC49F8E1944896700312120 /* sqliteBackingstore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC49F8D1944896700312120 /* sqliteBackingstore.swift */; };
-		2CC49F8F1944896700312120 /* sqliteBackingstore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC49F8D1944896700312120 /* sqliteBackingstore.swift */; };
 		2CD82C4B1948B4900091BA9F /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2CD82C481948B4900091BA9F /* TestModel.xcdatamodeld */; };
+		4396986C1A2363E8008ADAE8 /* SqliteBackingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396986B1A2363E8008ADAE8 /* SqliteBackingStore.swift */; };
+		4396986D1A2363E8008ADAE8 /* SqliteBackingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396986B1A2363E8008ADAE8 /* SqliteBackingStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +35,9 @@
 		2C4B22B31943CB5000D279EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C4B22B41943CB5000D279EA /* RepositoryKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryKitTests.swift; sourceTree = "<group>"; };
 		2CC49F7D1944803000312120 /* BackingstoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackingstoreProtocol.swift; sourceTree = "<group>"; };
-		2CC49F8D1944896700312120 /* sqliteBackingstore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sqliteBackingstore.swift; sourceTree = "<group>"; };
 		2CD82C491948B4900091BA9F /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
 		2CD82C4C1948B4E10091BA9F /* TestModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TestModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		4396986B1A2363E8008ADAE8 /* SqliteBackingStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqliteBackingStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +125,7 @@
 		2CC49F81194484A800312120 /* BackingStores */ = {
 			isa = PBXGroup;
 			children = (
-				2CC49F8D1944896700312120 /* sqliteBackingstore.swift */,
+				4396986B1A2363E8008ADAE8 /* SqliteBackingStore.swift */,
 			);
 			name = BackingStores;
 			sourceTree = "<group>";
@@ -255,7 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC49F7E1944803000312120 /* BackingstoreProtocol.swift in Sources */,
-				2CC49F8E1944896700312120 /* sqliteBackingstore.swift in Sources */,
+				4396986C1A2363E8008ADAE8 /* SqliteBackingStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC49F85194484D000312120 /* BackingstoreProtocol.swift in Sources */,
-				2CC49F8F1944896700312120 /* sqliteBackingstore.swift in Sources */,
+				4396986D1A2363E8008ADAE8 /* SqliteBackingStore.swift in Sources */,
 				2C4B22B51943CB5000D279EA /* RepositoryKitTests.swift in Sources */,
 				2CD82C4B1948B4900091BA9F /* TestModel.xcdatamodeld in Sources */,
 			);

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A37C2831-FF99-483B-A0A2-433B03E8E5C9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Workspace</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F86181B71BB1D3E139FDB916AE5415ABCA1B7ADF</key>
+		<string>https://github.com/DirkLewis/RMDuex.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Workspace.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F86181B71BB1D3E139FDB916AE5415ABCA1B7ADF</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/DirkLewis/RMDuex.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F86181B71BB1D3E139FDB916AE5415ABCA1B7ADF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F86181B71BB1D3E139FDB916AE5415ABCA1B7ADF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RMDuex</string>
+		</dict>
+	</array>
+</dict>
+</plist>

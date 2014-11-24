@@ -21,42 +21,43 @@ class RepositoryKitTests: XCTestCase {
         super.tearDown()
     }
     
-//    func testExample() {
-//        // This is an example of a functional test case.
-//        XCTAssert(true, "Pass")
-//    }
-//    
-//    func testPerformanceExample() {
-//        // This is an example of a performance test case.
-//        self.measureBlock() {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
+    
+    
+    func testCreateBackingstoreWithDefaults(){
+    
+        var bs = SqliteBackingStore.createBackingstore(nil, fileName: "Test.sqlite", configurationName: "TestConfig")
+        XCTAssertTrue(bs.fileName == "Test.sqlite", "must have correct name")
+        XCTAssertTrue(bs.modelName == "model", "must have correct name")
+        XCTAssertTrue(bs.configurationName == "TestConfig", "must have correct name")
+    
+    }
     
     func testCreateBackingstore(){
-        var bs = sqliteBackingstore.createBackingstore("TestModel", fileName: "Test.sqlite", configurationName: "Default")
-        XCTAssertTrue(bs != nil, "Must Not Be nil", file: "", line: 0)
+        var bs = SqliteBackingStore.createBackingstore("TestModel", fileName: "Test.sqlite", configurationName: "TestConfig")
+        XCTAssertTrue(bs.fileName == "Test.sqlite", "must have correct name")
+        XCTAssertTrue(bs.modelName == "TestModel", "must have correct name")
+        XCTAssertTrue(bs.configurationName == "TestConfig", "must have correct name")
 
-
     }
     
-    func testOpenBackingStore(){
-        var bs = sqliteBackingstore.createBackingstore("TestModel", fileName: "Test.sqlite", configurationName: "Default")
-        let context1 = bs.openBackingstoreDefaultContext()
-        XCTAssertTrue(context1, "Backingstore must open", file: "", line: 0)
-        let context2 = bs.openBackingstoreDefaultContext()
-        XCTAssertEqualObjects(context1, context2, "Must be the same object", file: "", line: 0)
-    }
     
-    func testOpenBackingStoreByName(){
-    
-        var bs = sqliteBackingstore.createBackingstore("TestModel", fileName: "Test.sqlite", configurationName: "Default")
-        let context1 = bs.openBackingstoreContext("myqueue")!
-        XCTAssertTrue(context1 != nil, "Backingstore must open", file: "", line: 0)
-        let context2 = bs.openBackingstoreContext("myqueue")
-        XCTAssertEqualObjects(context1, context2, "Must be the same object", file: "", line: 0)
-        XCTAssertTrue(context1.userInfo["QueueName"] as NSString == "myqueue", "Name must match", file: "", line: 0)
-    }
+//    func testOpenBackingStore(){
+//        var bs = SqliteBackingStore.createBackingstore("TestModel", fileName: "Test.sqlite", configurationName: "Default")
+//        let context1 = bs.openBackingstoreDefaultContext()
+//        XCTAssertTrue(context1 = true, "Backingstore must open")
+//        let context2 = bs.openBackingstoreDefaultContext()
+//        XCTAssertEqualObjects(context1, context2, "Must be the same object", file: "", line: 0)
+//    }
+//    
+//    func testOpenBackingStoreByName(){
+//    
+//        var bs = SqliteBackingStore.createBackingstore("TestModel", fileName: "Test.sqlite", configurationName: "Default")
+//        let context1 = bs.openBackingstoreContext("myqueue")!
+//        XCTAssertTrue(context1 != nil, "Backingstore must open", file: "", line: 0)
+//        let context2 = bs.openBackingstoreContext("myqueue")
+//        XCTAssertEqualObjects(context1, context2, "Must be the same object", file: "", line: 0)
+//        XCTAssertTrue(context1.userInfo["QueueName"] as NSString == "myqueue", "Name must match", file: "", line: 0)
+//    }
 
     
 }
